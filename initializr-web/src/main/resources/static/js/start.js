@@ -136,6 +136,10 @@ $(function () {
             }
         });
     };
+    var addDefaultTag = function(id,name){
+    	 $("#starters").append("<div class='default-tag' data-id='" + id + "'>" + name +
+    	 	"<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+    }
     var addTag = function (id, name) {
         if ($("#starters div[data-id='" + id + "']").length == 0) {
             $("#starters").append("<div class='tag' data-id='" + id + "'>" + name +
@@ -156,6 +160,16 @@ $(function () {
             engine.add(data.dependencies);
         });
     };
+    var defaultObj = [{"id":"web","name":"Web"},{"id":"security","name":"Security"},{"id":"cloud-connectors","name":"Cloud-connectors"},
+    	{"id":"hateoas","name":"Hateoas"},{"id":"pact","name":"Pact"},{"id":"testng","name":"Test NG"},{"id":"mockito","name":"Mockito"},
+    	{"id":"cloud-hystrix","name":"Hystrix"},{"id":"cloud-ribbon","name":"Ribbon"},{"id":"swagger","name":"Swagger"},
+    	{"id":"asciidoctor","name":"Asciidoctor"},{"id":"restdocs","name":"REST Docs"},{"id":"cloud-eureka","name":"Eureka Discovery"}
+    	/*,{"id":"","name":""},{"id":"","name":""}*/];
+    
+    $.each(defaultObj, function(i,obj) {
+    	addDefaultTag(obj.id,obj.name);
+   	 $("#dependencies input[value='" + obj.id + "']").prop('checked', true); 
+      });
     refreshDependencies($("#bootVersion").val());
     $("#type").on('change', function () {
         $("#form").attr('action', $(this.options[this.selectedIndex]).attr('data-action'))

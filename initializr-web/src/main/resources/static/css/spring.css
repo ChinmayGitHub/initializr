@@ -53,16 +53,35 @@ input[type=text] {
 .tag {
     background-color: #6db33f;
     color: #fff;
-    font-weight: 700;
+    font-weight: 500;
     border-radius: .25em;
     display: inline-block;
-    padding: 0.4em 0.7em;
+    padding: 0.1em 0.5em;
     margin: 0.2em;
+    font-size: small;
+}
+.default-tag{
+	font-size: small;
+	color: #fff;
+    font-weight: 500;
+    border-radius: .25em;
+    display: inline-block;
+    padding: 0.1em 0.5em;
+    margin: 0.2em;
+	background-color: #6DB3ED;
+}
+.default-tag .close {
+    float: none;
+    margin-left: 0.2em;
+    font-size: 17px;
+    font-weight: bolder;
 }
 
 .tag .close {
     float: none;
     margin-left: 0.2em;
+    font-size: 17px;
+    font-weight: bolder;
 }
 
 .advanced {

@@ -348,6 +348,34 @@ initializr:
           artifactId: stormpath-default-spring-boot-starter
           versionRange: "[1.5.0.RC1,2.0.0.M1)"
           bom: stormpath-bom
+    - name: Unit and Integration Test
+      content:
+        - name: JUnit
+          id: junit
+          description: Java Unit testing 
+          groupId: junit
+          artifactId: junit
+          version: 4.12   
+        - name: Test NG
+          id: testng
+          description: Testing framework
+          groupId: org.testng
+          artifactId: testng
+          version: 6.11
+        - name: Mockito
+          id: mockito
+          description: Mocking framework
+          groupId: org.mockito
+          artifactId: mockito-all
+          version: 1.9.5    
+    - name: Consumer-Driven Contracts
+      content:
+        - name: Pact
+          id: pact
+          description: Frameworks provide support for Consumer Driven Contracts testing 
+          groupId: au.com.dius
+          artifactId: pact-jvm-provider-maven_2.11
+          version: 3.3.4
     - name: Template Engines
       content:
         - name: Freemarker
@@ -1066,6 +1094,18 @@ initializr:
           id: remote-shell
           description: CRaSH shell integration
           versionRange: "[1.0.0.RELEASE,1.5.0.RC1)"
+        - name: Asciidoctor
+          id: asciidoctor
+          description: Library for running Asciidoctor on the JVM 
+          groupId: org.asciidoctor
+          artifactId: asciidoctorj
+          version: 1.5.4
+        - name: Swagger
+          id: swagger
+          description: To generate the swagger documentation 
+          groupId: io.swagger
+          artifactId: swagger-project
+          version: 1.5.13
   types:
     - name: Maven Project
       id: maven-project
@@ -1074,7 +1114,7 @@ initializr:
       tags:
         build: maven
         format: project
-      default: true
+      default: false
       action: /starter.zip
     - name: Maven POM
       id: maven-build
@@ -1092,7 +1132,7 @@ initializr:
       tags:
         build: gradle
         format: project
-      default: false
+      default: true
       action: /starter.zip
     - name: Gradle Config
       id: gradle-build
@@ -1136,7 +1176,7 @@ initializr:
       default: false
     - name: 1.5.2
       id: 1.5.2.RELEASE
-      default: false
+      default: true
     - name : 1.4.6(SNAPSHOT)
       id: 1.4.6.BUILD-SNAPSHOT
       default: false

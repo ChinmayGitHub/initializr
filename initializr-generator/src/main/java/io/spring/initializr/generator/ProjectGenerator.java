@@ -531,13 +531,13 @@ public class ProjectGenerator {
 	private String doGenerateManifest(Map<String, Object> model) {
 		String ManifestData = null;
 		
-		ManifestData = "applications: \n\t- name: "+model.get("name").toString().replaceAll(" ", "_");
+		ManifestData = "applications: \n- name: "+model.get("name").toString().replaceAll(" ", "_")+"\n  host: "+model.get("name").toString().replaceAll(" ", "_");
 		if(model.get("services")!= null){
 			List<String> serviceObj  = (List<String>) model.get("services");
 			if(!serviceObj.isEmpty()){
-			ManifestData = ManifestData + "\n\t  services:";
+			ManifestData = ManifestData + "\n  services:";
 			for (String string : serviceObj) {
-				ManifestData = ManifestData +"\n\t   -"+string;
+				ManifestData = ManifestData +"\n   -"+string;
 			}
 			}
 		}
