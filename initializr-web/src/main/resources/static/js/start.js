@@ -201,7 +201,7 @@ $(function () {
                              $("#starters div").each(function() {
                                     $(this).show();
                              });
-                               $(".more-tag").before($('.tag'));
+                               $(".more-tag").before($('.default-tag'));
                       }else{
                              var i=0;
                              $("#starters div").each(function() {
@@ -235,10 +235,10 @@ $(function () {
          }
   } 
    if ($("#starters div[data-id='" + id + "']").length == 0) {
-       $("#starters").append("<div class='tag' data-id='" + id + "' style='display: "+display+";'>" + name +
+       $("#starters").prepend("<div class='tag' data-id='" + id + "' style='display: "+display+";'>" + name +
            "<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
    }
-   $(".more-tag").before($('.tag'));
+   $(".more-tag").before($('.default-tag'));
     };
     var removeTag = function (id) {
         $("#starters div[data-id='" + id + "']").remove();
@@ -329,8 +329,8 @@ $(function () {
     $('#autocomplete').bind('typeahead:select', function (ev, suggestion) {
         var alreadySelected = $("#dependencies input[value='" + suggestion.id + "']").prop('checked');
         if(alreadySelected) {
-            removeTag(suggestion.id);
-            $("#dependencies input[value='" + suggestion.id + "']").prop('checked', false);
+            //removeTag(suggestion.id);
+            //$("#dependencies input[value='" + suggestion.id + "']").prop('checked', false);
         }
         else {
             addTag(suggestion.id, suggestion.name);
