@@ -137,14 +137,108 @@ $(function () {
         });
     };
     var addDefaultTag = function(id,name){
-    	 $("#starters").append("<div class='default-tag' data-id='" + id + "'>" + name +
+    	var moreCount = $("#starters > div").length - 2;
+        if ($("#starters > div").length == 3) {
+               console.log("adding more link");
+               $("#starters").append("<div id='moreTag' class='more-tag'>" + "More ("+moreCount+")</div>");
+               $("#moreTag").on("click", function() {
+                     console.log("more clicked" +$("#moreTag").text());
+                     if($("#moreTag").text().includes("More")){
+                            $(".more-tag").text("Less");
+                            $("#starters div").each(function() {
+                                   $(this).show();
+                            });
+                              $(".more-tag").before($('.default-tag'));
+                     }else{
+                            var i=0;
+                            $("#starters div").each(function() {
+                                   i++;
+                                   if (i <= 3) {
+                                          $(this).show();
+                                   }else{
+                                          $(this).hide();
+                                   }
+                                   console.log($(this));
+                                   if($(this).attr('id')=="moreTag"){
+                                          $(this).show();
+                                   }
+ 
+                            });
+                            $(".more-tag").text("More ("+(i-4)+")");
+                     }
+               });
+        }
+    	
+     // make the div hidden
+        var display = "inline-block";
+        if($("#starters > div").length > 3){
+               if($("#moreTag").text().includes("More")){
+                      display = "none";
+                      if(moreCount != 1){
+                             moreCount=moreCount-1;
+                             $(".more-tag").text("More ("+moreCount+")");
+                      }
+               }
+        } 
+        
+    	 $("#starters").append("<div class='default-tag' data-id='" + id + "' style='display: "+display+";'>" + name +
     	 	"<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+    	 $(".more-tag").before($('.default-tag'));
     }
     var addTag = function (id, name) {
-        if ($("#starters div[data-id='" + id + "']").length == 0) {
+        /*if ($("#starters div[data-id='" + id + "']").length == 0) {
             $("#starters").append("<div class='tag' data-id='" + id + "'>" + name +
                 "<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
-        }
+        }*/
+    	 var moreCount = $("#starters > div").length - 2;
+         if ($("#starters > div").length == 3) {
+                console.log("adding more link");
+                $("#starters").append("<div id='moreTag' class='more-tag'>" + "More ("+moreCount+")</div>");
+                $("#moreTag").on("click", function() {
+                      console.log("more clicked" +$("#moreTag").text());
+                      if($("#moreTag").text().includes("More")){
+                             $(".more-gta").text("Less");
+                             $("#starters div").each(function() {
+                                    $(this).show();
+                             });
+                               $(".more-tag").before($('.tag'));
+                      }else{
+                             var i=0;
+                             $("#starters div").each(function() {
+                                    i++;
+                                    if (i <= 3) {
+                                           $(this).show();
+                                    }else{
+                                           $(this).hide();
+                                    }
+                                    console.log($(this));
+                                    if($(this).attr('id')=="moreTag"){
+                                           $(this).show();
+                                    }
+  
+                             });
+                             $(".more-tag").text("More ("+(i-4)+")");
+                      }
+                });
+         }
+  
+  
+  // make the div hidden
+  var display = "inline-block";
+  if($("#starters > div").length > 3){
+         if($("#moreTag").text().includes("More")){
+                display = "none";
+                if(moreCount != 1){
+                       moreCount=moreCount-1;
+                       $(".more-tag").text("More ("+moreCount+")");
+                }
+         }
+  } 
+   if ($("#starters div[data-id='" + id + "']").length == 0) {
+       $("#starters").append("<div class='tag' data-id='" + id + "' style='display: "+display+";'>" + name +
+           "<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+   }
+   $(".more-tag").before($('.tag'));
     };
     var removeTag = function (id) {
         $("#starters div[data-id='" + id + "']").remove();

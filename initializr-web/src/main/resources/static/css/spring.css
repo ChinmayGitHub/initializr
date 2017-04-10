@@ -60,6 +60,17 @@ input[type=text] {
     margin: 0.2em;
     font-size: small;
 }
+.more-tag {
+	font-size: small;
+    background-color: #4da6ff;
+    color: #fff;
+    font-weight: 500;
+    border-radius: .25em;
+    display: inline-block;
+    padding: 0.1em 0.5em;
+    margin: 0.2em;
+    cursor:pointer
+} 
 .default-tag{
 	font-size: small;
 	color: #fff;
